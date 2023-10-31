@@ -8,8 +8,8 @@ export default async function configureMongo() {
       useNewUrlParser: true,
       useUnifiedTopology: true
     })
-    logger('info', `MongoDB connection successful to ${process.env.DB_NAME} database`);
+    logger('info', `MongoDB connection successful to CoderBak database`);
   } catch (err) {
-    logger('error', `Cannot connect to MongoDB ${process.env.DB_NAME} database - ${err}`);
+    logger('error', `Cannot connect to MongoDB CoderBack database - ${err}`);
   }
 }
