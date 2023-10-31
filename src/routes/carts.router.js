@@ -8,7 +8,7 @@ const router = Router();
 
 
 
-router.post('/', authorization(['admin', 'user', 'premium']), cartController.createCart);
+router.post('/', authorization(['user', 'premium']), cartController.createCart);
 
 router.get('/:cartId', authorization(['admin', 'user', 'premium']), cartController.getCartById);
 

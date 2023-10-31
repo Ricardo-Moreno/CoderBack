@@ -7,7 +7,6 @@ const addListeners = () => {
 
 const addToCart = async (event) => {
     const productId = event.target.dataset.id;
-    console.log('Agregando producto con id: ', productId);
     let cartId = localStorage.getItem('cartId');
     if (!cartId) {
         const createCartFetch = await fetch('/api/carts', {
@@ -15,7 +14,6 @@ const addToCart = async (event) => {
         });
 
         const result = await createCartFetch.json();
-        console.log('Resultado de crear un nuevo carrito: ', result);
         if (result.status === 1) {
             cartId = result.cartId;
             console.log('Nuevo carrito creado con id: ', cartId);
@@ -36,7 +34,7 @@ const addToCart = async (event) => {
     if (result.status === 1) {
         alert(`Producto agregado al carrito ${cartId} exitosamente!`);
     } else {
-        alert(`Error al agregar el producto al carrito ${cartId}`);
+        alert(`Error al agregar el producto al carrito ${result.errorObject.message}`);
     }
 }
 

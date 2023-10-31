@@ -43,3 +43,50 @@ export const validateResetPasswordToken = (redirectOnError = false) => {
   };
 };
 
+export const jwtFromCookie = async (req, res, next) => {
+  try {
+    const token = tokenFromCookieExtractor(req);
+    if (!token) {
+      return next();
+    }
+    req.user = token;
+    next();
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const setLastConnection = async (req, res, next) => {
+  try {
+    const userService = new UserService();
+    const token = req.user;
+    if (!token) {
+      return next();
+    }
+    const decodedToken = jwtVerify(token);
+    const user = decodedToken.user;
+    if (!user || !user.email || user.email.toLowerCase() === process.env.ADMIN_USER.toLowerCase()) {
+      return next();
+    }
+    await userService.updateLastConnection(user.email);
+    next();
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const checkDocumentUploader = async (req, res, next) => {
+  try {
+    const user = req.user;
+    if (!user) {
+      return res.status(401).send({ status: 0, msg: 'Unauthorized' });
+    }
+    if (user.email !== req.params.email) {
+      return res.status(403).send({ status: 0, msg: 'Forbidden' });
+    }
+    next();
+  } catch (error) {
+    throw error;
+  }
+};
+

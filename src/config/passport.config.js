@@ -5,7 +5,7 @@ import { createHash, isValidPassword, tokenFromCookieExtractor } from "../utils/
 import GitHubStrategy from "passport-github2";
 import jwt from 'passport-jwt';
 import { default as token } from 'jsonwebtoken';
-import UserDTO from "../dto/users.dto.js";
+import { UserDTO } from "../dto/users.dto.js";
 
 
 const JWTStrategy = jwt.Strategy;
@@ -126,13 +126,9 @@ const initializePassport = () => {
     passport.use('github', new GitHubStrategy({
         clientID: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
-        callbackURL: 'http://localhost:8080/api/sessions/githubcallback',
+        callbackURL: `${process.env.APP_URL}/api/sessions/githubcallback`,
     }, async (profile, done) => {
         try {
-            if (!profile._json.email) {
-                return done('Correo electrónico no proporcionado por GitHub');
-            }
-
             let user = await UsersModel.findOne({ email: profile._json.email });
             if (!user) {
                 user = {
@@ -140,7 +136,7 @@ const initializePassport = () => {
                     lastName: '',
                     email: profile._json.email,
                     password: '',
-                };
+                }
                 user = await UsersModel.create(user);
             }
             const userDTO = new UserDTO(user);

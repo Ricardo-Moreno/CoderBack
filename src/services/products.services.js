@@ -250,7 +250,7 @@ class ProductService {
             }
             if (user.role === 'premium') {
                 if (product.owner.toLowerCase() !== user.email.toLowerCase()) {
-                    CustomError.createError({
+                    FloweryCustomError.createError({
                         name: 'deleteProduct Error',
                         message: 'You are not the owner of this product',
                         type: EnumErrors.BUSSINESS_RULES_ERROR.type,
@@ -258,6 +258,11 @@ class ProductService {
                         statusCode: EnumErrors.BUSSINESS_RULES_ERROR.statusCode
                     });
                 }
+            }
+            if (user.role === 'admin' && product.owner !== 'admin') {
+                await sendEmail(product.owner, 'Product deleted', `<h1>Product ${product.code} deleted</h1>
+                <p>Your product ${product.title} has been deleted by user ${user.firstName} ${user.lastName}.</p>
+                <p>For any concern please contact the user at ${user.email}.</p>${user.firstName}`);
             }
             return await this.productRepository.deleteProduct(productId);
         } catch (error) {
