@@ -1,0 +1,98 @@
+[
+	{
+		"id": "KrUeP_38w",
+		"title": "Toyota Corolla",
+		"description": "Toyota Corolla",
+		"code": "TC2023",
+		"price": 29990,
+		"status": true,
+		"stock": 35,
+		"category": "Automóvil",
+		"thumbnails": []
+	},
+	{
+		"id": "mR5FYc9Ek",
+		"title": "Ford Mustang",
+		"description": "Ford Mustang",
+		"code": "FM2023",
+		"price": 45999,
+		"status": true,
+		"stock": 20,
+		"category": "Deportivo",
+		"thumbnails": [
+			"2",
+			"3",
+			"4"
+		]
+	},
+	{
+		"id": "VPulkQZno",
+		"title": "Honda Civic",
+		"description": "Honda Civic",
+		"code": "HC2023",
+		"price": 24990,
+		"status": true,
+		"stock": 45,
+		"category": "Sedán",
+		"thumbnails": [
+			1,
+			2
+		]
+	},
+	{
+		"id": "U7anh8CnK",
+		"title": "Nissan Altima",
+		"description": "Nissan Altima",
+		"code": "NA2023",
+		"price": 27999,
+		"status": true,
+		"stock": 30,
+		"category": "Sedán",
+		"thumbnails": []
+	},
+	{
+		"id": "tvLe3P0NO",
+		"title": "Chevrolet Camaro",
+		"description": "Chevrolet Camaro",
+		"code": "CC2023",
+		"price": 56999,
+		"status": true,
+		"stock": 15,
+		"category": "Deportivo",
+		"thumbnails": [
+			"2",
+			"3",
+			"4"
+		]
+	},
+	{
+		"id": "BJgYaRkxT",
+		"title": "Tesla Model S",
+		"description": "Tesla Model S",
+		"code": "TMS2023",
+		"price": 74999,
+		"status": true,
+		"stock": 10,
+		"category": "Eléctrico",
+		"thumbnails": [
+			"2",
+			"3",
+			"4"
+		]
+	},
+	{
+		"id": "Dc7bggo4I",
+		"title": "BMW X5",
+		"description": "BMW X5",
+		"code": "BX52023",
+		"price": 66999,
+		"status": true,
+		"stock": 25,
+		"category": "SUV",
+		"thumbnails": [
+			"2",
+			"3",
+			"4"
+		]
+	}
+]
