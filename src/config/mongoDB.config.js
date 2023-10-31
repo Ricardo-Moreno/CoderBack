@@ -3,7 +3,7 @@ import { logger } from '../utils/logger.js';
 
 export default async function configureMongo() {
   try {
-    const mongo = `${process.env.DB_USER}`;
+    const mongo = process.env.DB_USER;
     await mongoose.connect(mongo, {
       useNewUrlParser: true,
       useUnifiedTopology: true
